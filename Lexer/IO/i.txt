@@ -1,0 +1,2 @@
+int permission = 0755;
+int mask = 0x2Af;

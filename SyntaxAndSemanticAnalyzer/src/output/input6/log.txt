@@ -1,0 +1,374 @@
+Line 1: type_specifier : INT
+
+int
+
+Line 1: type_specifier : INT
+
+int
+
+Line 1: parameter_list : type_specifier ID
+
+int a
+
+Line 1: type_specifier : FLOAT
+
+float
+
+Line 1: parameter_list : parameter_list COMMA type_specifier ID
+
+int a,float a
+
+Error at line 1: Multiple declaration of a in parameter
+
+Line 2: factor : CONST_INT
+
+5
+
+Line 2: unary_expression : factor
+
+5
+
+Line 2: term : unary_expression
+
+5
+
+Line 2: simple_expression : term
+
+5
+
+Line 2: rel_expression : simple_expression
+
+5
+
+Line 2: logic_expression : rel_expression
+
+5
+
+Line 2: expression : logic expression
+
+5
+
+Line 2: statement : RETURN expression SEMICOLON
+
+return 5;
+
+Line 2: statements : statement
+
+return 5;
+
+Line 1: compound_statement : LCURL statements RCURL
+
+{
+return 5;
+}
+
+
+ScopeTable # 1.1
+ 7 --> < a , ID >
+
+ScopeTable # 1
+ 24 --> < foo , ID >
+
+Line 1: func_definition : type_specifier ID LPAREN parameter_list RPAREN compound_statement
+
+int foo(int a,float a){
+return 5;
+}
+
+Line 1: unit : func_definition
+
+int foo(int a,float a){
+return 5;
+}
+
+Line 1: program : unit
+
+int foo(int a,float a){
+return 5;
+}
+
+Line 5: type_specifier : INT
+
+int
+
+Line 6: type_specifier : INT
+
+int
+
+Line 6: declaration_list : ID
+
+a
+
+Line 6: declaration_list : declaration_list COMMA ID
+
+a,b
+
+Line 6: var_declaration : type_specifier declaration_list SEMICOLON
+
+int a,b;
+
+Line 6: statement : var_declaration
+
+int a,b;
+
+Line 6: statements : statement
+
+int a,b;
+
+Line 7: variable : ID
+
+a
+
+Line 7: factor : CONST_INT
+
+5
+
+Line 7: unary_expression : factor
+
+5
+
+Line 7: term : unary_expression
+
+5
+
+Line 7: simple_expression : term
+
+5
+
+Line 7: rel_expression : simple_expression
+
+5
+
+Line 7: logic_expression : rel_expression
+
+5
+
+Line 7: expression : variable ASSIGNOP logic_expression
+
+a=5
+
+Line 7: expression_statement : expression SEMICOLON
+
+a=5;
+
+Line 7: statement : expression_statement
+
+a=5;
+
+Line 7: statements : statements statement
+
+int a,b;
+a=5;
+
+Line 8: variable : ID
+
+b
+
+Line 8: factor : CONST_INT
+
+3
+
+Line 8: unary_expression : factor
+
+3
+
+Line 8: term : unary_expression
+
+3
+
+Line 8: simple_expression : term
+
+3
+
+Line 8: rel_expression : simple_expression
+
+3
+
+Line 8: logic_expression : rel_expression
+
+3
+
+Line 8: expression : variable ASSIGNOP logic_expression
+
+b=3
+
+Line 8: expression_statement : expression SEMICOLON
+
+b=3;
+
+Line 8: statement : expression_statement
+
+b=3;
+
+Line 8: statements : statements statement
+
+int a,b;
+a=5;
+b=3;
+
+Line 9: variable : ID
+
+a
+
+Line 9: factor : variable
+
+a
+
+Line 9: unary_expression : factor
+
+a
+
+Line 9: term : unary_expression
+
+a
+
+Line 9: simple_expression : term
+
+a
+
+Line 9: rel_expression : simple_expression
+
+a
+
+Line 9: logic_expression : rel_expression
+
+a
+
+Line 9: arguments : logic_expression
+
+a
+
+Line 9: variable : ID
+
+b
+
+Line 9: factor : variable
+
+b
+
+Line 9: unary_expression : factor
+
+b
+
+Line 9: term : unary_expression
+
+b
+
+Line 9: simple_expression : term
+
+b
+
+Line 9: rel_expression : simple_expression
+
+b
+
+Line 9: logic_expression : rel_expression
+
+b
+
+Line 9: arguments : arguments COMMA logic_expression
+
+a,b
+
+Line 9: argument_list : arguments
+
+a,b
+
+Error at line 9: 2th argument mismatch in function foo
+
+Line 9: factor : ID LPAREN argument_list RPAREN
+
+foo(a,b)
+
+Line 9: unary_expression : factor
+
+foo(a,b)
+
+Line 9: term : unary_expression
+
+foo(a,b)
+
+Line 9: simple_expression : term
+
+foo(a,b)
+
+Line 9: rel_expression : simple_expression
+
+foo(a,b)
+
+Line 9: logic_expression : rel_expression
+
+foo(a,b)
+
+Line 9: expression : logic expression
+
+foo(a,b)
+
+Line 9: statement : RETURN expression SEMICOLON
+
+return foo(a,b);
+
+Line 9: statements : statements statement
+
+int a,b;
+a=5;
+b=3;
+return foo(a,b);
+
+Line 5: compound_statement : LCURL statements RCURL
+
+{
+int a,b;
+a=5;
+b=3;
+return foo(a,b);
+}
+
+
+ScopeTable # 1.2
+ 7 --> < a , ID >
+ 8 --> < b , ID >
+
+ScopeTable # 1
+ 1 --> < main , ID >
+ 24 --> < foo , ID >
+
+Line 5: func_definition : type_specifier ID LPAREN RPAREN compound_statement
+
+int main(){
+int a,b;
+a=5;
+b=3;
+return foo(a,b);
+}
+
+Line 5: unit : func_definition
+
+int main(){
+int a,b;
+a=5;
+b=3;
+return foo(a,b);
+}
+
+Line 5: program : program unit
+
+int foo(int a,float a){
+return 5;
+}
+
+int main(){
+int a,b;
+a=5;
+b=3;
+return foo(a,b);
+}
+
+Line 1: start : program
+
+ScopeTable # 1
+ 1 --> < main , ID >
+ 24 --> < foo , ID >
+
+Total lines: 10
+Total errors: 2
