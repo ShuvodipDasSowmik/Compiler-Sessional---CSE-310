@@ -1,1 +1,1 @@
-<ID, ijk> 
+<INT> <ID, x> <ASSIGNOP, => <CONST_HEX, 0x1F> <SEMICOLON, ;> 
