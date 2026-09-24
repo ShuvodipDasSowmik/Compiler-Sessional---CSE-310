@@ -1,4 +1,0 @@
-Error at line 1: Multiple declaration of a in parameter
-
-Error at line 9: 2th argument mismatch in function foo
-
